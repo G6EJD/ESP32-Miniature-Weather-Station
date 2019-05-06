@@ -164,7 +164,7 @@ void BME280_Read_Sensor() {
 }
 
 float Calculate_WindSpeed() {
-  if ((millis() - Last_Event_Time) > 200) { // Ignore short time intervals to debounce switch contacts
+  if ((millis() - Last_Event_Time) > 2) { // Ignore short time intervals to debounce switch contacts
     WindSpeed = (1.00F / (((millis() - Last_Event_Time) / 1000.00F) * 2)) * WS_Calibration; // Calculate wind speed
   }
   // Calculate average wind speed
