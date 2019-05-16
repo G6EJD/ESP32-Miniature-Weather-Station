@@ -88,6 +88,7 @@ void loop() {
   display.drawString(2, 42, String(bme_humi, 0)+"%");                                                                    // Display temperature and relative humidity in %
   display.drawString((Format=="I"?70:62),20, String(bme_pres, (Format=="I"?1:0))+(Format=="M"||Format=="X"?"hPa":"in")); // Display air pressure in hecto Pascals or inches
   display.drawString((Format=="I"?70:62),42, String(Calculate_WindSpeed(), 1) + (Format=="I"||Format=="X"?"mph":"kph")); // Display wind speed in mph (X) or kph (M)
+  //display.drawString(62,52, String(Calculate_WindDirection(), 0) + "°"); 
   display.setFont(ArialMT_Plain_10);                                                                                     // Set the Font to normal
   display.display();                                                                                                     // Update display
   delay(500);                                                                                                            // Small arbitrary delay
@@ -179,6 +180,12 @@ float Calculate_WindSpeed() {
   if (Format == "M") WindSpeed = WindSpeed * 1.60934;                             // Convert to kph if in Metric mode
   return WindSpeed;
 }
+
+float Calculate_WindDirection() {
+  int winddirection = analogRead(36); // VP = 36 VN = 39
+  return map(winddirection,0,3095,0,359);
+}
+
 
 /*
  * Example time zones see: https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
