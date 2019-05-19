@@ -62,6 +62,7 @@ void IRAM_ATTR Timer_TImeout_ISR() {
 //#########################################################################################
 void setup() {
   Serial.begin(115200);
+  //Wire.begin(SDA, SCL);                        // ESP8266 version 
   Wire.begin(SDA, SCL, 100000);                  // (sda,scl,bus speed) Start the Wire service for the OLED display using assigned pins for SCL and SDA at 100KHz
   bool status = bme.begin(0x76);                 // For Adafruit sensors use address 0x77, for most 3rd party types use address 0x76
   if (!status) Serial.println("Could not find a valid BME280 sensor, check wiring!"); // Check for a sensor
