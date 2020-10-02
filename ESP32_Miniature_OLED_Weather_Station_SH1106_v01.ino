@@ -26,7 +26,20 @@ Adafruit_BME280 bme;              // I2C
 // Change to your WiFi credentials and select your time zone
 const char* ssid     = "your_SSID";
 const char* password = "your_PASSWORD";
-const char* Timezone = "GMT0BST,M3.5.0/01,M10.5.0/02";  // UK, see below for others and link to database
+
+//Example time zones see: https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
+//const char* Timezone = "GMT0BST,M3.5.0/01,M10.5.0/02";     // UK
+//const char* Timezone = "MET-2METDST,M3.5.0/01,M10.5.0/02"; // Most of Europe
+//const char* Timezone = "CET-1CEST,M3.5.0,M10.5.0/3";       // Central Europe
+const char* Timezone = "EST-2METDST,M3.5.0/01,M10.5.0/02"; // Most of Europe
+//const char* Timezone = "EST5EDT,M3.2.0,M11.1.0";           // EST USA
+//const char* Timezone = "CST6CDT,M3.2.0,M11.1.0";           // CST USA
+//const char* Timezone = "MST7MDT,M4.1.0,M10.5.0";           // MST USA
+//const char* Timezone = "PST8PDT,M3.2.0,M11.1.0";           //PST USA
+//const char* Timezone = "NZST-12NZDT,M9.5.0,M4.1.0/3";      // Auckland
+//const char* Timezone = "EET-2EEST,M3.5.5/0,M10.5.5/0";     // Asia
+//const char* Timezone = "ACST-9:30ACDT,M10.1.0,M4.1.0/3":   // Australia
+
 String      Format   = "X";       // Time format M for dd-mm-yy and 23:59:59, "I" for mm-dd-yy and 12:59:59 PM, "X" for Metric units but WSpeed in MPH
 
 //Calibration factors, extent of wind speed average, and Wind Sensor pin adjust as necessary
@@ -187,16 +200,4 @@ float Calculate_WindDirection() {
   return map(winddirection,0,3095,0,359);
 }
 
-/*
- * Example time zones see: https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
-//const char* Timezone = "GMT0BST,M3.5.0/01,M10.5.0/02";     // UK
-//const char* Timezone = "MET-2METDST,M3.5.0/01,M10.5.0/02"; // Most of Europe
-//const char* Timezone = "CET-1CEST,M3.5.0,M10.5.0/3";       // Central Europe
-//const char* Timezone = "EST-2METDST,M3.5.0/01,M10.5.0/02"; // Most of Europe
-//const char* Timezone = "EST5EDT,M3.2.0,M11.1.0";           // EST USA
-//const char* Timezone = "CST6CDT,M3.2.0,M11.1.0";           // CST USA
-//const char* Timezone = "MST7MDT,M4.1.0,M10.5.0";           // MST USA
-//const char* Timezone = "NZST-12NZDT,M9.5.0,M4.1.0/3";      // Auckland
-//const char* Timezone = "EET-2EEST,M3.5.5/0,M10.5.5/0";     // Asia
-//const char* Timezone = "ACST-9:30ACDT,M10.1.0,M4.1.0/3":   // Australia
-*/
+
