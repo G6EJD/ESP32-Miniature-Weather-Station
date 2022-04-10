@@ -33,7 +33,7 @@ String      Format   = "X";       // Time format M for dd-mm-yy and 23:59:59, "I
 #define pressure_offset 3.5       // Air pressure calibration, adjust for your altitude
 #define WS_Calibration  1.1       // Wind Speed calibration factor
 #define WS_Samples      10        // Number of Wind Speed samples for an average
-#define WindSensorPin   4         // Only use pins that can support an interrupt
+#define WindSensorPin   15        // Only use pins that can support an interrupt
 
 static String         Date_str, Time_str;
 volatile unsigned int local_Unix_time = 0, next_update_due = 0;
